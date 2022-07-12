@@ -1,22 +1,42 @@
+package CSES;
+
 import java.util.*;
 import java.io.*;
 
-public class CSES_Trailing_Zeros {
+public class NumberSpiral {
 
 // ========================== CODE STARTS HERE ===================================================
 
 
     public static void solve(InputReader in, PrintWriter out) {
-        long n = in.nextInt();
-        long zeros = 0;
-        while (n >= 5) {
-            n /= 5;
-            zeros += n;
+        int n = in.nextInt();
+        while (n-- > 0) {
+            long row = in.nextLong();
+            long col = in.nextLong();
+            long diagonal = (row > col) ? (row * row) - (row - 1) : (col * col) - (col - 1);
+            if (col > row) {
+                long ans;
+                if (isEven(col)) {
+                    ans = diagonal - (col - row);
+                } else {
+                    ans = diagonal + (col - row);
+                }
+                out.println(ans);
+            } else {
+                long ans;
+                if (isEven(row)) {
+                    ans = diagonal + (row - col);
+                } else {
+                    ans = diagonal - (row - col);
+                }
+                out.println(ans);
+            }
         }
-        out.print(zeros);
-
     }
 
+    public static boolean isEven(long row) {
+        return row % 2 == 0;
+    }
 
 // =========================== CODE ENDS HERE ====================================================
 

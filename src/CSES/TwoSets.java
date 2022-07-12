@@ -1,30 +1,62 @@
+package CSES;
+
 import java.util.*;
 import java.io.*;
 
-public class CSES_Increasing_Array {
+public class TwoSets {
 
 // ========================== CODE STARTS HERE ===================================================
 
-
     public static void solve(InputReader in, PrintWriter out) {
         int n = in.nextInt();
-        long[] arr = new long[n];
-        for (int i = 0; i < n; i++) {
-            arr[i] = in.nextLong();
-        }
-        long moves = 0L;
-
-            for (int i = 1; i < n; i++) {
-                if (arr[i] < arr[i - 1]) {
-                    moves += arr[i-1] - arr[i];
-                    arr[i] = arr[i - 1] ;
-
+        if (n % 4 == 0) {
+            ArrayList<Integer> a = new ArrayList<>();
+            ArrayList<Integer> b = new ArrayList<>();
+            for (int i = 1; i < n + 1; i++) {
+                if (i % 4 == 0 || i % 4 == 1) {
+                    a.add(i);
+                } else {
+                    b.add(i);
                 }
+            }
+            out.println("YES");
+            out.println(a.size());
+            for (int i :
+                    a) {
+                out.print(i + " ");
+            }
+            out.println();
+            out.println(b.size());
+            for (int i :
+                    b) {
+                out.print(i + " ");
+            }
+        } else if (n % 4 == 3) {
+            ArrayList<Integer> a = new ArrayList<>();
+            ArrayList<Integer> b = new ArrayList<>();
+            for (int i = 1; i < n + 1; i++) {
+                if (i % 4 == 1 || i % 4 == 2) {
+                    a.add(i);
+                } else {
+                    b.add(i);
+                }
+            }
+            out.println("YES");
+            out.println(a.size());
+            for (int i :
+                    a) {
+                out.print(i + " ");
+            }
+            out.println(b.size());
+            for (int i :
+                    b) {
+
+                out.print(i + " ");
 
             }
-
-
-        out.println(moves);
+        } else {
+            out.println("NO");
+        }
     }
 
 

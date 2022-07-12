@@ -1,7 +1,9 @@
+package CSES;
+
 import java.util.*;
 import java.io.*;
 
-public class CSES_Permutations {
+public class Permutations {
 
 // ========================== CODE STARTS HERE ===================================================
 

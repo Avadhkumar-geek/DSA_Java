@@ -1,19 +1,21 @@
+package CSES;
+
 import java.util.*;
 import java.io.*;
 
-public class CSES_Two_Knights {
+public class Trailing_Zeros {
 
 // ========================== CODE STARTS HERE ===================================================
 
 
     public static void solve(InputReader in, PrintWriter out) {
-        int n = in.nextInt();
-        for (int a =1; a<=n; a++){
-            long x = (long) a *a;
-            long total = x*(x -1)/2;
-            long possible= total - 4L *(a-1)*(a-2);
-            out.println(possible);
+        long n = in.nextInt();
+        long zeros = 0;
+        while (n >= 5) {
+            n /= 5;
+            zeros += n;
         }
+        out.print(zeros);
 
     }
 

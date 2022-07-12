@@ -1,40 +1,34 @@
+package CSES;
+
 import java.util.*;
 import java.io.*;
 
-public class CSES_Number_Spiral {
+public class IncreasingArray {
 
 // ========================== CODE STARTS HERE ===================================================
 
 
     public static void solve(InputReader in, PrintWriter out) {
         int n = in.nextInt();
-        while (n-- > 0) {
-            long row = in.nextLong();
-            long col = in.nextLong();
-            long diagonal = (row > col) ? (row * row) - (row - 1) : (col * col) - (col - 1);
-            if (col > row) {
-                long ans;
-                if (isEven(col)) {
-                    ans = diagonal - (col - row);
-                } else {
-                    ans = diagonal + (col - row);
-                }
-                out.println(ans);
-            } else {
-                long ans;
-                if (isEven(row)) {
-                    ans = diagonal + (row - col);
-                } else {
-                    ans = diagonal - (row - col);
-                }
-                out.println(ans);
-            }
+        long[] arr = new long[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = in.nextLong();
         }
+        long moves = 0L;
+
+            for (int i = 1; i < n; i++) {
+                if (arr[i] < arr[i - 1]) {
+                    moves += arr[i-1] - arr[i];
+                    arr[i] = arr[i - 1] ;
+
+                }
+
+            }
+
+
+        out.println(moves);
     }
 
-    public static boolean isEven(long row) {
-        return row % 2 == 0;
-    }
 
 // =========================== CODE ENDS HERE ====================================================
 

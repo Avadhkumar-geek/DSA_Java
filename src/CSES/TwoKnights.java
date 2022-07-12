@@ -1,26 +1,32 @@
+package CSES;
+
 import java.util.*;
 import java.io.*;
 
-public class CSES_missing_number {
+public class TwoKnights {
 
-    // ========================== CODE STARTS HERE =============================================
-    public static long solve(InputReader in) {
-        long N = in.nextInt();
-        long sigma = N * (N + 1) / 2;
-        long SUM = 0;
-        while (N-- > 1) {
-            SUM += in.nextInt();
+// ========================== CODE STARTS HERE ===================================================
+
+
+    public static void solve(InputReader in, PrintWriter out) {
+        int n = in.nextInt();
+        for (int a =1; a<=n; a++){
+            long x = (long) a *a;
+            long total = x*(x -1)/2;
+            long possible= total - 4L *(a-1)*(a-2);
+            out.println(possible);
         }
-        return sigma - SUM;
+
     }
 
-// =========================== CODE ENDS HERE ===================================================
+
+// =========================== CODE ENDS HERE ====================================================
 
 
     public static void main(String[] args) throws IOException {
         InputReader in = new InputReader();
         PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
-        out.println(solve(in));
+        solve(in, out);
         out.close();
     }
 
@@ -130,10 +136,7 @@ public class CSES_missing_number {
         }
 
         private boolean isEndOfLine(int c) {
-
             return c == '\n' || c == '\r' || c == -1;
         }
     }
 }
-
-

@@ -1,70 +1,28 @@
+package CSES;
+
 import java.util.*;
 import java.io.*;
 
-public class CSES_Two_Sets {
+public class MissingNumber {
 
-// ========================== CODE STARTS HERE ===================================================
-
-    public static void solve(InputReader in, PrintWriter out) {
-        int n = in.nextInt();
-        if (n % 4 == 0) {
-            ArrayList<Integer> a = new ArrayList<>();
-            ArrayList<Integer> b = new ArrayList<>();
-            for (int i = 1; i < n + 1; i++) {
-                if (i % 4 == 0 || i % 4 == 1) {
-                    a.add(i);
-                } else {
-                    b.add(i);
-                }
-            }
-            out.println("YES");
-            out.println(a.size());
-            for (int i :
-                    a) {
-                out.print(i + " ");
-            }
-            out.println();
-            out.println(b.size());
-            for (int i :
-                    b) {
-                out.print(i + " ");
-            }
-        } else if (n % 4 == 3) {
-            ArrayList<Integer> a = new ArrayList<>();
-            ArrayList<Integer> b = new ArrayList<>();
-            for (int i = 1; i < n + 1; i++) {
-                if (i % 4 == 1 || i % 4 == 2) {
-                    a.add(i);
-                } else {
-                    b.add(i);
-                }
-            }
-            out.println("YES");
-            out.println(a.size());
-            for (int i :
-                    a) {
-                out.print(i + " ");
-            }
-            out.println(b.size());
-            for (int i :
-                    b) {
-
-                out.print(i + " ");
-
-            }
-        } else {
-            out.println("NO");
+    // ========================== CODE STARTS HERE =============================================
+    public static long solve(InputReader in) {
+        long N = in.nextInt();
+        long sigma = N * (N + 1) / 2;
+        long SUM = 0;
+        while (N-- > 1) {
+            SUM += in.nextInt();
         }
+        return sigma - SUM;
     }
 
-
-// =========================== CODE ENDS HERE ====================================================
+// =========================== CODE ENDS HERE ===================================================
 
 
     public static void main(String[] args) throws IOException {
         InputReader in = new InputReader();
         PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
-        solve(in, out);
+        out.println(solve(in));
         out.close();
     }
 
@@ -174,7 +132,10 @@ public class CSES_Two_Sets {
         }
 
         private boolean isEndOfLine(int c) {
+
             return c == '\n' || c == '\r' || c == -1;
         }
     }
 }
+
+

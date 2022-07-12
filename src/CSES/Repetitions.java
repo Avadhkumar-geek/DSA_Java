@@ -1,7 +1,9 @@
+package CSES;
+
 import java.util.*;
 import java.io.*;
 
-public class CSES_Repetitions {
+public class Repetitions {
 
 // ========================== CODE STARTS HERE ===================================================
 
