@@ -3,7 +3,7 @@ package CSES;
 import java.util.*;
 import java.io.*;
 
-public class Trailing_Zeros {
+public class TrailingZeros {
 
 // ========================== CODE STARTS HERE ===================================================
 

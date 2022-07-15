@@ -2,23 +2,56 @@ package CSES;
 
 import java.io.*;
 
-public class CreaingStrings {
 
+public class DidgitQueries {
+
+    static PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
     // ========================== CODE STARTS HERE ===================================================
 
-    public static void solve(Reader in, PrintWriter out) throws IOException {
+    public static void solve(Reader in) throws IOException {
         int T = in.nextInt();
         while (T-- > 0) {
-
+            long q = in.nextLong();
+            Query(q);
         }
+    }
+
+    static void Query(long k) {
+        long x = 0;
+        long sum = 0;
+        while (sum < k) {
+            sum += 9 * pow(x) * (x + 1);
+            if (sum > k) {
+                sum -= 9 * pow(x) * (x + 1);
+                break;
+            }
+            x++;
+        }
+
+        long y = (k - sum);
+        long last;
+        last = pow(x) + y / (x + 1) - 1;
+        long z = y % (x + 1);
+        if (z != 0) {
+            last = (last + 1) / pow(x + 1 - z);
+        }
+        System.out.println(last % 10);
+    }
+
+
+    public static long pow(long p) {
+        long base = 1;
+        while (p-- > 0) {
+            base *= 10;
+        }
+        return base;
     }
 
     // =========================== CODE ENDS HERE ====================================================
 
     public static void main(String[] args) throws IOException {
         Reader in = new Reader();
-        PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
-        solve(in, out);
+        solve(in);
         out.close();
     }
 

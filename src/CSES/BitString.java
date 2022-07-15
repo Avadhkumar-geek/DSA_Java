@@ -1,9 +1,9 @@
-package CSES.Bit_String;
+package CSES;
 
 import java.util.*;
 import java.io.*;
 
-public class Main {
+public class BitString {
 
 // ========================== CODE STARTS HERE ===================================================
 
