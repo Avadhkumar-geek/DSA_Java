@@ -5,7 +5,7 @@ import static java.lang.System.out;
 import java.util.*;
 import java.io.*;
 
-public class RestaurantCustomers {
+public class MovieFestival {
 
     // ============================ CODE STARTS HERE ============================
 
@@ -13,20 +13,21 @@ public class RestaurantCustomers {
         FastScanner in = new FastScanner();
         int T = in.nextInt();
         TreeMap<Integer, Integer> time = new TreeMap<>();
-        int a,b;
+        int a, b;
         for (int i = 0; i < T; i++) {
             a = in.nextInt();
             b = in.nextInt();
-            time.put(a, 1);
-            time.put(b, -1);
+            time.put(b, a);
         }
 
+        int res = 0;
+        int current = 0;
+        for (Map.Entry<Integer, Integer> i : time.entrySet()) {
+            if (i.getValue() >= current) {
+                res += 1;
+                current = i.getKey();
 
-
-        int s = 0, res = 0;
-        for (Map.Entry<Integer, Integer> i: time.entrySet()) {
-            s += i.getValue();
-            res = Math.max(s, res);
+            }
         }
         out.println(res);
     }
@@ -42,7 +43,6 @@ public class RestaurantCustomers {
     }
 
     public static void printArr(int[] arr) {
-        //for debugging only
         for (int x : arr)
             out.print(x + " ");
         out.println();
@@ -85,7 +85,6 @@ public class RestaurantCustomers {
     }
 
     public static long power(long x, long y, long p) {
-        //0^0 = 1
         long res = 1L;
         x = x % p;
         while (y > 0) {
@@ -98,7 +97,6 @@ public class RestaurantCustomers {
     }
 
     public static void push(HashMap<Integer, Integer> map, int k, int v) {
-        //map[k] += v;
         if (!map.containsKey(k))
             map.put(k, v);
         else
@@ -106,8 +104,6 @@ public class RestaurantCustomers {
     }
 
     public static void pull(HashMap<Integer, Integer> map, int k, int v) {
-        //assumes map[k] >= v
-        //map[k] -= v
         int lol = map.get(k);
         if (lol == v)
             map.remove(k);
@@ -145,7 +141,6 @@ public class RestaurantCustomers {
     }
 
     static class FastScanner {
-
         private int BS = 1 << 16;
         private char NC = (char) 0;
         private byte[] buf = new byte[BS];
